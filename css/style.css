@@ -1,0 +1,169 @@
+:root {
+  --bg: #12121a;
+  --panel: #1a1a24;
+  --panel-2: #21212e;
+  --text: #e8e6e1;
+  --text-dim: #9b98a8;
+  --accent: #e0a458;
+  --accent-2: #5fb3a3;
+  --border: #2c2c3a;
+  --danger: #e5645a;
+  --radius: 10px;
+  --mono: 'JetBrains Mono', monospace;
+  --display: 'Space Grotesk', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--display);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: var(--accent-2); }
+a:hover { color: var(--accent); }
+
+/* ---------- Navbar (reusable component) ---------- */
+.navbar-terminal {
+  background: rgba(18,18,26,0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.navbar-terminal .navbar-brand {
+  font-family: var(--mono);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.navbar-terminal .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.dot--red { background: #e5645a; }
+.dot--yellow { background: #e0b158; }
+.dot--green { background: #5fb37a; }
+.navbar-terminal .nav-link {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  color: var(--text-dim) !important;
+}
+.navbar-terminal .nav-link:hover,
+.navbar-terminal .nav-link.active { color: var(--accent) !important; }
+
+/* ---------- Auth card ---------- */
+.auth-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+}
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.auth-card__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+.auth-card__bar span.title { margin-left: 8px; }
+.auth-card__body { padding: 32px 28px 28px; }
+
+.auth-card h1 {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
+.auth-card .subtitle {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--accent-2);
+  margin-bottom: 24px;
+}
+
+.form-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.form-control {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+}
+.form-control:focus {
+  background: var(--panel-2);
+  border-color: var(--accent-2);
+  color: var(--text);
+  box-shadow: 0 0 0 0.2rem rgba(95,179,163,0.25);
+}
+.form-control.is-invalid { border-color: var(--danger); }
+.form-control.is-valid { border-color: var(--accent-2); }
+.invalid-feedback { font-family: var(--mono); font-size: 0.75rem; }
+
+.input-group .btn-toggle {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-left: none;
+  color: var(--text-dim);
+}
+.input-group .btn-toggle:hover { color: var(--accent); }
+
+.btn-terminal {
+  width: 100%;
+  background: var(--accent);
+  border: none;
+  color: #1a1408;
+  font-family: var(--mono);
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.btn-terminal:hover { background: #f0b671; color: #1a1408; }
+.btn-terminal:disabled { opacity: 0.5; }
+
+.auth-switch {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-top: 18px;
+}
+
+.ajax-status {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  min-height: 18px;
+  margin-top: 4px;
+}
+.ajax-status.checking { color: var(--text-dim); }
+.ajax-status.taken { color: var(--danger); }
+.ajax-status.available { color: var(--accent-2); }
+
+/* ---------- Footer (reusable component) ---------- */
+.footer-terminal {
+  text-align: center;
+  padding: 24px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border);
+}
