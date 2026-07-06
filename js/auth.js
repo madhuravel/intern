@@ -100,8 +100,8 @@ function validateRequired(input, message) {
 }
 
 function setFieldState(input, isValid, message = '') {
-  const feedback = input.parentElement.parentElement.querySelector('.invalid-feedback')
-    || input.parentElement.querySelector('.invalid-feedback');
+  const container = input.closest('.mb-3');
+  const feedback = container ? container.querySelector('.invalid-feedback') : null;
 
   input.classList.remove('is-valid', 'is-invalid');
   if (isValid === null) return;
