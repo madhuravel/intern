@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Frontend-Task2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-shield-lock-fill me-2 fs-3 text-success"></i>
+                <span class="fw-bold">AuthApp</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <button id="darkModeToggle" class="btn btn-link nav-link">
+                            <i class="bi bi-moon-fill" id="darkModeIcon"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-success ms-lg-3 rounded-pill px-4" href="register.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container d-flex flex-column justify-content-center align-items-center min-vh-100 py-5">
+        <div class="auth-card glass-card fade-in p-4 p-md-5 w-100" style="max-width: 500px;">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold">Welcome Back!</h2>
+                <p class="text-muted">Please login to your account.</p>
+            </div>
+
+            <form id="loginForm" novalidate>
+                <!-- Email Input -->
+                <div class="mb-3 form-group">
+                    <label for="loginEmail" class="form-label">Email Address</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input type="email" class="form-control" id="loginEmail" required placeholder="Enter your email">
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                    </div>
+                </div>
+
+                <!-- Password Input -->
+                <div class="mb-3 form-group">
+                    <label for="loginPassword" class="form-label">Password</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input type="password" class="form-control" id="loginPassword" required placeholder="Enter your password">
+                        <button class="btn btn-outline-secondary toggle-password" type="button" data-target="loginPassword">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                        <div class="invalid-feedback">Password is required.</div>
+                    </div>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input custom-checkbox" id="rememberMe">
+                        <label class="form-check-label text-muted small" for="rememberMe">Remember me</label>
+                    </div>
+                    <a href="#" class="text-success small fw-medium text-decoration-none">Forgot Password?</a>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-success w-100 rounded-pill py-2 custom-btn position-relative" id="loginBtn" disabled>
+                    <span class="btn-text">Login</span>
+                    <span class="spinner-border spinner-border-sm position-absolute top-50 start-50 translate-middle d-none" id="loginSpinner" role="status" aria-hidden="true"></span>
+                </button>
+
+                <!-- Social Login -->
+                <div class="text-center mt-4">
+                    <p class="text-muted small mb-3">Or login with</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button type="button" class="btn btn-outline-dark rounded-circle social-btn"><i class="bi bi-google"></i></button>
+                        <button type="button" class="btn btn-outline-dark rounded-circle social-btn"><i class="bi bi-github"></i></button>
+                    </div>
+                </div>
+
+                <!-- Register Link -->
+                <div class="text-center mt-4">
+                    <p class="text-muted small">Don't have an account? <a href="register.html" class="text-success fw-bold text-decoration-none">Register here</a></p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 text-center">
+        <div class="container">
+            <span class="text-muted small">© 2026 AuthApp. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

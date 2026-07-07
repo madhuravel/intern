@@ -1,0 +1,54 @@
+/* 
+    Responsive Adjustments
+*/
+
+/* Extra Small Devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .glass-card {
+        border-radius: 1rem;
+        padding: 1.5rem !important;
+    }
+    
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .custom-btn {
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+    }
+}
+
+/* Small Devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .glass-card {
+        padding: 2rem !important;
+    }
+}
+
+/* Medium Devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* Adjustments for medium devices */
+}
+
+/* Large Devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    /* Navbar spacing on large screens */
+    .navbar-nav .nav-item {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+}
+
+/* Extra Large Devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    /* Ensure forms max-width doesn't look stretched */
+}
+
+/* Fix height on mobile landscape */
+@media (max-height: 600px) and (orientation: landscape) {
+    main {
+        padding-top: 5rem !important;
+        padding-bottom: 3rem !important;
+    }
+}

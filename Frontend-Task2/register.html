@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Frontend-Task2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-shield-lock-fill me-2 fs-3 text-success"></i>
+                <span class="fw-bold">AuthApp</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <button id="darkModeToggle" class="btn btn-link nav-link">
+                            <i class="bi bi-moon-fill" id="darkModeIcon"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-success ms-lg-3 rounded-pill px-4 fw-bold shadow-sm" href="register.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container d-flex flex-column justify-content-center align-items-center min-vh-100 py-5">
+        <div class="auth-card glass-card fade-in p-4 p-md-5 w-100" style="max-width: 600px;">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold">Create Account</h2>
+                <p class="text-muted">Join us today! It's quick and easy.</p>
+            </div>
+
+            <form id="registerForm" novalidate>
+                <!-- Full Name -->
+                <div class="mb-3 form-group">
+                    <label for="regName" class="form-label">Full Name</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                        <input type="text" class="form-control" id="regName" required placeholder="Enter your full name">
+                        <div class="invalid-feedback">Please enter your full name.</div>
+                    </div>
+                </div>
+
+                <!-- Username with AJAX validation -->
+                <div class="mb-3 form-group position-relative">
+                    <label for="regUsername" class="form-label">Username</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text"><i class="bi bi-at"></i></span>
+                        <input type="text" class="form-control" id="regUsername" required placeholder="Choose a username">
+                        <div class="invalid-feedback" id="usernameError">Please enter a username.</div>
+                    </div>
+                    <div id="usernameStatus" class="form-text small mt-1 d-none"></div>
+                </div>
+
+                <!-- Email Input -->
+                <div class="mb-3 form-group">
+                    <label for="regEmail" class="form-label">Email Address</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input type="email" class="form-control" id="regEmail" required placeholder="Enter your email">
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                    </div>
+                </div>
+
+                <!-- Password Input -->
+                <div class="mb-3 form-group">
+                    <label for="regPassword" class="form-label">Password</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input type="password" class="form-control" id="regPassword" required placeholder="Create a password">
+                        <button class="btn btn-outline-secondary toggle-password" type="button" data-target="regPassword">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                        <div class="invalid-feedback">
+                            Password must contain min 8 chars, one uppercase, one lowercase, one number, and one special char.
+                        </div>
+                    </div>
+                    <!-- Password Strength Meter -->
+                    <div class="progress mt-2" style="height: 5px;">
+                        <div id="passwordStrength" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+                <!-- Confirm Password Input -->
+                <div class="mb-4 form-group">
+                    <label for="regConfirmPassword" class="form-label">Confirm Password</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
+                        <input type="password" class="form-control" id="regConfirmPassword" required placeholder="Confirm your password">
+                        <button class="btn btn-outline-secondary toggle-password" type="button" data-target="regConfirmPassword">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                        <div class="invalid-feedback">Passwords do not match.</div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-success w-100 rounded-pill py-2 custom-btn position-relative" id="registerBtn" disabled>
+                    <span class="btn-text">Register Now</span>
+                    <span class="spinner-border spinner-border-sm position-absolute top-50 start-50 translate-middle d-none" id="registerSpinner" role="status" aria-hidden="true"></span>
+                </button>
+
+                <!-- Social Login -->
+                <div class="text-center mt-4">
+                    <p class="text-muted small mb-3">Or sign up with</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button type="button" class="btn btn-outline-dark rounded-circle social-btn"><i class="bi bi-google"></i></button>
+                        <button type="button" class="btn btn-outline-dark rounded-circle social-btn"><i class="bi bi-github"></i></button>
+                    </div>
+                </div>
+
+                <!-- Login Link -->
+                <div class="text-center mt-4">
+                    <p class="text-muted small">Already have an account? <a href="login.html" class="text-success fw-bold text-decoration-none">Login here</a></p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 text-center">
+        <div class="container">
+            <span class="text-muted small">© 2026 AuthApp. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card text-center p-4">
+                <div class="modal-body py-4">
+                    <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+                    <h3 class="mt-3 fw-bold">Registration Successful!</h3>
+                    <p class="text-muted">Your account has been created successfully. You can now login to access your dashboard.</p>
+                    <a href="login.html" class="btn btn-success rounded-pill px-5 mt-3">Go to Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>
